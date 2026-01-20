@@ -8,7 +8,7 @@
 		<version>4.0.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>ragul.dev</groupId>
+	<groupId>dev.ragul.jps</groupId>
 	<artifactId>ragul-spring-boot-starter-todo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ragul-spring-boot-starter-todo</name>
@@ -33,6 +33,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webmvc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>5.10.2</version>
+			<scope>test</scope>
 		</dependency>
 
 		<dependency>

@@ -4,6 +4,7 @@ import dev.ragul.jps.todo.JpsTodoClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestClient;
@@ -20,12 +21,19 @@ public class JsonPlaceholderServiceConfiguration {
     }
 
     @Bean
-    public RestClient restClient(RestClient.Builder builder){
-        return builder.baseUrl(jpsProperties.baseUrl()).build();
+    @ConditionalOnMissingBean
+    public RestClient restClient() {
+        logger.info("Creating RestClient for JsonPlaceholder with baseUrl={}",
+                jpsProperties.baseUrl());
+
+        return RestClient.builder()
+                .baseUrl(jpsProperties.baseUrl())
+                .build();
     }
 
     @Bean
-    public JpsTodoClient jpsTodoClient(RestClient restClient){
+    @ConditionalOnMissingBean
+    public JpsTodoClient jpsTodoClient(RestClient restClient) {
         return new JpsTodoClient(restClient);
     }
 
