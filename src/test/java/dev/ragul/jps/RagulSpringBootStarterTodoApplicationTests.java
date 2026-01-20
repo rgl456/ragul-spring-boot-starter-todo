@@ -1,4 +1,4 @@
-package ragul.dev.ragul_spring_boot_starter_todo;
+package dev.ragul.jps;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
